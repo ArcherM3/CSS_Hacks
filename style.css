@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0F172A; /* Deep Navy */
+}
+
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.login-card {
+  background: rgba(248, 250, 252, 0.05); /* Soft White glass */
+  padding: 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,0,0,0.6);
+  border: 1px solid rgba(248, 250, 252, 0.1);
+}
+
+.logo {
+  color: #3B82F6; /* Electric Blue */
+  margin-bottom: 10px;
+  
+}
+
+.tagline {
+  color: #F8FAFC;
+  font-size: 14px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+input {
+  width: 100%;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid rgba(248, 250, 252, 0.1);
+  outline: none;
+  background: #0F172A;
+  color: #F8FAFC;
+  transition: 0.3s;
+
+}
+
+input::placeholder {
+  color: #94A3B8;
+}
+
+input:focus {
+  border: 1px solid #3B82F6;
+  box-shadow: 0 0 5px #3B82F6;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #3B82F6;
+  color: #F8FAFC;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  
+}
+
+button:hover {
+  background: #2563EB;
+  transform: scale(1.05);
+}
+
+.note {
+  color: #94A3B8;
+  font-size: 12px;
+  margin-top: 10px;
+}

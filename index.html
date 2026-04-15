@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CampusFix Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-container">
+  <div class="login-card">
+    <h1 class="logo">CampusFix 🔧</h1>
+    <p class="tagline">Report. Track. Resolve.</p>
+
+    <form onsubmit="handleLogin(event)">
+      <input type="email" id="email" placeholder="College Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="note">Use your college email only</p>
+  </div>
+</div>
+
+<script>
+  function handleLogin(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+
+    if (!email.endsWith("@cse.nits.ac.in")) {
+      alert("Use college email only 😭");
+      return;
+    }
+
+    // Temporary demo logic
+    if (email === "admin@college.edu") {
+      alert("Redirecting to Admin Dashboard...");
+    } else {
+      alert("Redirecting to Student Dashboard...");
+    }
+  }
+</script>
+
+</body>
+</html>
