@@ -16,10 +16,17 @@
 
     <nav class="nav-links">
       <a href="#" class="active">Home</a>
-      <a href="#">Raise a complaint</a>
-      <a href="#">Departments</a>
+      <a href="complaint.html">Raise a complaint</a>
+      <a href="dept.html">Departments</a>
+    <span id="auth-section">
       <a href="role.html" class="login-btn">Login</a>
       <a href="signup.html" class="sign_up-btn">Sign Up</a>
+    </span>
+
+    <span id="profile-section" style="display:none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+       class="profile-icon">
+    </span>
     </nav>
   </header>
 
@@ -40,6 +47,20 @@
 
     
   </section>
+  <script>
+  const isLoggedIn = localStorage.getItem("loggedIn");
+
+  const authSection = document.getElementById("auth-section");
+  const profileSection = document.getElementById("profile-section");
+
+  if (isLoggedIn === "true") {
+    authSection.style.display = "none";
+    profileSection.style.display = "inline-block";
+  } else {
+    authSection.style.display = "inline-block";
+    profileSection.style.display = "none";
+  }
+</script>
 
 </body>
 </html>
