@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile - Dashboard</title>
+    <link rel="stylesheet" href="admin-profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+     <!-- Navigation Bar -->
+    <nav class="navbar" data-testid="main-navbar">
+        <div class="navbar-left">
+            <button class="menu-btn" id="menuBtn" data-testid="menu-button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <span class="brand-name">NIT Silchar Portal</span>
+        </div>
+        <div class="navbar-right">
+            <a href="#home" class="nav-link" data-testid="nav-link-home">Home</a>
+            <a href="#complaints" class="nav-link" data-testid="nav-link-complaints">Complaints</a>
+            <a href="#departments" class="nav-link" data-testid="nav-link-departments">Departments</a>
+            <div class="profile-icon" data-testid="profile-icon">A</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Admin Profile Header -->
+        <div class="profile-header" data-testid="admin-profile-header">
+            <div class="profile-photo-wrapper">
+                <img src="https://static.prod-images.emergentagent.com/jobs/e2874536-17aa-4694-b6e6-c1efb293b9f0/images/3e86e7a343521dcf43e9eabeddf7f4254c6e55e6e11c6562c841e5cb97a7a965.png" alt="Admin Profile Photo" class="profile-photo">
+            </div>
+            <div class="profile-info">
+                <h1 class="admin-name">Sarah Mitchell</h1>
+                <div class="admin-details">
+                    <div class="detail-item">
+                        <span class="detail-label">POSITION</span>
+                        <span class="detail-value">Senior Administrator</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">DEPARTMENT</span>
+                        <span class="detail-value">Operations Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="metrics-grid">
+            <!-- Total Registered Card -->
+            <div class="metric-card" data-testid="metric-card-registered">
+                <span class="metric-label">TOTAL REGISTERED</span>
+                <span class="metric-value" style="color: #0055FF;">127</span>
+            </div>
+
+            <!-- Resolved Card -->
+            <div class="metric-card" data-testid="metric-card-resolved">
+                <span class="metric-label">RESOLVED</span>
+                <span class="metric-value" style="color: #00C853;">89</span>
+            </div>
+
+            <!-- Pending Card (Interactive) -->
+            <div class="metric-card metric-card-interactive" id="pendingCard" data-testid="metric-card-pending">
+                <span class="metric-label">PENDING</span>
+                <span class="metric-value" style="color: #FF3B30;">38</span>
+                <span class="click-hint">Click to view details</span>
+            </div>
+        </div>
+
+        <!-- Pending Complaints Table (Hidden by default) -->
+        <div class="table-wrapper hidden" id="tableWrapper" data-testid="pending-complaints-table">
+            <div class="table-header">
+                <h2>Pending Complaints</h2>
+                <button class="close-btn" id="closeBtn">✕</button>
+            </div>
+            <table class="complaints-table">
+                <thead>
+                    <tr>
+                        <th>Problem Description</th>
+                        <th>Registered Date</th>
+                        <th>Assigned To</th>
+                        <th>Completion Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="complaint-row" data-testid="complaint-row">
+                        <td>Network connectivity issues in Building A</td>
+                        <td>2026-04-10</td>
+                        <td>John Davis</td>
+                        <td><span class="status-badge status-inprogress">In Progress</span></td>
+                    </tr>
+                    <tr class="complaint-row" data-testid="complaint-row">
+                        <td>HVAC system malfunction - 3rd floor</td>
+                        <td>2026-04-11</td>
+                        <td>Maria Garcia</td>
+                        <td><span class="status-badge status-assigned">Assigned</span></td>
+                    </tr>
+                    <tr class="complaint-row" data-testid="complaint-row">
+                        <td>Elevator maintenance required - Tower B</td>
+                        <td>2026-04-09</td>
+                        <td>Robert Chen</td>
+                        <td><span class="status-badge status-reviewing">Reviewing</span></td>
+                    </tr>
+                    <tr class="complaint-row" data-testid="complaint-row">
+                        <td>Security access card reader not working</td>
+                        <td>2026-04-12</td>
+                        <td>Emily Johnson</td>
+                        <td><span class="status-badge status-assigned">Assigned</span></td>
+                    </tr>
+                    <tr class="complaint-row" data-testid="complaint-row">
+                        <td>Parking lot lighting failure - Section C</td>
+                        <td>2026-04-08</td>
+                        <td>David Thompson</td>
+                        <td><span class="status-badge status-inprogress">In Progress</span></td>
+                    </tr>
+                    <tr class="complaint-row" data-testid="complaint-row">
+                        <td>Water leakage in cafeteria area</td>
+                        <td>2026-04-13</td>
+                        <td>Lisa Anderson</td>
+                        <td><span class="status-badge status-assigned">Assigned</span></td>
+                    </tr>
+                    <tr class="complaint-row" data-testid="complaint-row">
+                        <td>Fire alarm system testing required</td>
+                        <td>2026-04-07</td>
+                        <td>Michael Brown</td>
+                        <td><span class="status-badge status-reviewing">Reviewing</span></td>
+                    </tr>
+                    <tr class="complaint-row" data-testid="complaint-row">
+                        <td>Office furniture repair request - Room 305</td>
+                        <td>2026-04-14</td>
+                        <td>Sarah Wilson</td>
+                        <td><span class="status-badge status-assigned">Assigned</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Interactive functionality for Pending card
+        const pendingCard = document.getElementById('pendingCard');
+        const tableWrapper = document.getElementById('tableWrapper');
+        const closeBtn = document.getElementById('closeBtn');
+
+        pendingCard.addEventListener('click', function() {
+            tableWrapper.classList.toggle('hidden');
+        });
+
+        closeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            tableWrapper.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
+
