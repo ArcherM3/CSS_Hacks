@@ -5,41 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Student Portal</title>
   <link rel="stylesheet" href="stud-profile.css" />
-  <link rel="stylesheet" href="navbar.css" />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
-   <!-- Navbar -->
-  <header class="navbar solid">
-    <a href="home_page.html" class="logo">
-      ☰ <span>CampusResolve</span>
-    </a>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">NIT Silchar Portal</div>
+    <div class="nav-links">
+      <a href="home_page.html" class="nav-link ">Home</a>
+      <a href="complaint.html" class="nav-link">Complaints</a>
+      <a href="dept.html" class="nav-link">Departments</a>
+    </div>
+    <div class="nav-avatar" id="navAvatar" style="overflow:hidden;">A</div>
+  </nav>
 
-    <nav class="nav-links">
-      <a href="home_page.html">Home</a>
-      <a href="complaint.html">Raise a complaint</a>
-      <a href="dept1.html">Departments</a>
-
-      <span id="auth-section">
-        <a href="role.html" class="login-btn">Login</a>
-        <a href="signup2.html" class="sign_up-btn">Sign Up</a>
-      </span>
-
-      <span id="profile-section">
-        <a href="stud-profile.html" id="profile-link">
-          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profile-icon-img" class="profile-icon" alt="Profile">
-        </a>
-      </span>
-    </nav>
-  </header>
   <!-- MAIN CONTENT -->
   <main class="main">
 
     <!-- PROFILE CARD -->
     <section class="profile-card">
       <div class="profile-photo-wrapper">
-        <div class="profile-photo">
+        <div class="profile-photo" id="profileAvatar" style="background-color:var(--clr-blush);">
           <span class="photo-label">Photo</span>
           <div class="photo-upload-hint">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -49,14 +36,14 @@
         </div>
       </div>
       <div class="profile-info">
-        <h1 class="profile-name">Rohan Ali</h1>
+        <h1 class="profile-name" id="profileName">Loading...</h1>
         <div class="profile-meta">
           <span class="meta-tag">Scholar ID</span>
-          <span class="meta-value">UG_25_CSE_0042</span>
+          <span class="meta-value" id="profileSchId">...</span>
         </div>
         <div class="profile-meta">
           <span class="meta-tag">Email</span>
-          <span class="meta-value">rohan_ug_25@cse.nits.ac.in</span>
+          <span class="meta-value" id="profileEmail">...</span>
         </div>
       </div>
       <div class="profile-actions">
@@ -76,7 +63,6 @@
         <span class="dashboard-subtitle">Complaint Summary</span>
       </div>
       <div class="stats-grid">
-
         <div class="stat-card stat-submitted">
           <div class="stat-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -85,9 +71,9 @@
           </div>
           <div class="stat-text">
             <span class="stat-label">Submitted</span>
-            <span class="stat-count stat-loading" id="countSubmitted">—</span>
+            <span class="stat-count" id="statSubmitted">0</span>
           </div>
-          <div class="stat-bar"><div class="stat-fill" id="fillSubmitted" style="width: 0%"></div></div>
+          <div class="stat-bar"><div class="stat-fill" id="statFillSubmitted" style="width: 0%"></div></div>
         </div>
 
         <div class="stat-card stat-resolved">
@@ -98,9 +84,9 @@
           </div>
           <div class="stat-text">
             <span class="stat-label">Resolved</span>
-            <span class="stat-count stat-loading" id="countResolved">—</span>
+            <span class="stat-count" id="statResolved">0</span>
           </div>
-          <div class="stat-bar"><div class="stat-fill" id="fillResolved" style="width: 0%"></div></div>
+          <div class="stat-bar"><div class="stat-fill" id="statFillResolved" style="width: 0%"></div></div>
         </div>
 
         <div class="stat-card stat-pending">
@@ -111,9 +97,9 @@
           </div>
           <div class="stat-text">
             <span class="stat-label">Pending</span>
-            <span class="stat-count stat-loading" id="countPending">—</span>
+            <span class="stat-count" id="statPending">0</span>
           </div>
-          <div class="stat-bar"><div class="stat-fill" id="fillPending" style="width: 0%"></div></div>
+          <div class="stat-bar"><div class="stat-fill" id="statFillPending" style="width: 0%"></div></div>
           <button class="stat-link" id="togglePendingBtn" onclick="togglePendingList()">
             View all
             <svg id="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="transition: transform 0.3s;">
@@ -121,7 +107,6 @@
             </svg>
           </button>
         </div>
-
       </div>
     </section>
 
@@ -131,7 +116,7 @@
         <div class="pending-header-left">
           <span class="pending-dot"></span>
           <h3 class="pending-title">Pending Complaints</h3>
-          <span class="pending-badge" id="pendingBadge">—</span>
+          <span class="pending-badge" id="pendingBadge">0</span>
         </div>
         <button class="pending-close" onclick="togglePendingList()">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -144,7 +129,7 @@
         <table class="pending-table">
           <thead>
             <tr>
-              <th>Complaint ID</th>
+              <th>#</th>
               <th>Problem Title</th>
               <th>Submitted On</th>
               <th>Status</th>
@@ -157,48 +142,126 @@
 
   </main>
 
-  <!-- Footer -->
- <footer class="footer">
-  <div class="footer-top">
-
-    <!-- Left Section -->
-    <div class="footer-left">
-      <h2>CampusResolve</h2>
-      <div class="footer-info">
-  <img src="NITS.svg" class="footer-logo" alt="logo">
-
-  <div class="footer-text">
-    <p>National Institute of Technology Silchar,</p>
-    <p>Cachar, Assam, India</p>
-    <p>Tel : +91 3842-224-797</p>
-    <p>Email: director@nits.ac.in</p>
-  </div>
-  <div class="footer-right">
-    <h3>For queries, contact</h3>
-    <p>+91 7896637401</p>
-    <p>+91 7099683180</p>
-    <p>+91 7010976847</p>
-    <p>+91 9004230955</p>
-  </div>
-</div>
-      
-    </div>
-
-  </div>
-
-  <!-- Bottom Bar -->
-   <div class="line">
-
-   </div>
-  <div class="footer-bottom">
-    <p>© 2026 CampusResolve</p>
-    <p>All rights reserved | Designed & Developed by WebWizards</p>
-  </div>
-  <div class="spacing">
+  <script>
+    const API_URL = "https://web-wizards-backend.onrender.com";
+    const token = localStorage.getItem("studentToken");
     
-  </div>
-</footer>
-  <script src="navbar.js"></script>
-  <script src="stud-profile.js"></script>
+    if (!token) {
+        window.location.href = "index.html?role=student";
+    }
+
+    let pendingComplaints = [];
+
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("studentToken");
+      window.location.href = "home_page.html";
+    }
+
+    function formatDate(dateStr) {
+      if(!dateStr) return "N/A";
+      const d = new Date(dateStr);
+      return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+    }
+
+    function buildTable() {
+      const tbody = document.getElementById('pendingTableBody');
+      tbody.innerHTML = '';
+      pendingComplaints.forEach((c, i) => {
+        let color = '#F57C00'; // Default orange for pending
+        let statusText = 'Pending';
+        if(c.status === 'resolved' || c.status === 'closed') { color = '#2E7D32'; statusText = 'Resolved'; }
+        else if(c.status === 'registered') { color = '#C62828'; statusText = 'Unopened'; }
+
+        const row = document.createElement('tr');
+        row.style.animationDelay = `${i * 0.03}s`;
+        row.innerHTML = `
+          <td class="row-num">${i + 1}</td>
+          <td class="row-title">${c.title}</td>
+          <td class="row-date">${formatDate(c.created_at || new Date())}</td>
+          <td><span class="status-chip" style="background:${color}18; color:${color}; border-color:${color}40;">
+            ${statusText}
+          </span></td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function togglePendingList() {
+      const panel = document.getElementById('pendingPanel');
+      const arrow = document.getElementById('arrowIcon');
+      const btn   = document.getElementById('togglePendingBtn');
+      const isOpen = panel.classList.toggle('open');
+      if(arrow) arrow.style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0deg)';
+      if(btn) {
+          btn.textContent = '';
+          btn.innerHTML = (isOpen ? 'Close' : 'View all') +
+            `<svg id="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="transition:transform 0.3s; transform:${isOpen ? 'rotate(90deg)' : 'rotate(0deg)'}"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>`;
+      }
+      if (isOpen && !document.getElementById('pendingTableBody').hasChildNodes()) {
+        buildTable();
+      }
+    }
+
+    async function loadData() {
+        try {
+            // Profile
+            const profileRes = await fetch(`${API_URL}/student/me`, {
+                headers: { "Authorization": "Bearer " + token }
+            });
+            if(profileRes.ok) {
+                const profile = await profileRes.json();
+                document.getElementById("profileName").textContent = profile.username;
+                document.getElementById("profileSchId").textContent = profile.sch_id;
+                document.getElementById("profileEmail").textContent = profile.college_email;
+                if(profile.avatar) {
+                    const avatarUrl = API_URL + "/" + profile.avatar;
+                    document.getElementById("navAvatar").style.backgroundImage = `url(${avatarUrl})`;
+                    document.getElementById("navAvatar").style.backgroundSize = "cover";
+                    document.getElementById("navAvatar").textContent = "";
+                    document.getElementById("profileAvatar").style.backgroundImage = `url(${avatarUrl})`;
+                    document.getElementById("profileAvatar").style.backgroundSize = "cover";
+                    document.querySelector(".photo-label").style.display = "none";
+                }
+            }
+
+            // Stats
+            // The API response might be {"registered": 1, "pending": 2, "resolved": 3, "closed": 4} or similar based on backend
+            // Let's fallback to manually calculating from my-complaints if stats fails or gives bad format
+            const complaintsRes = await fetch(`${API_URL}/complaints/student/my-complaints`, {
+                headers: { "Authorization": "Bearer " + token }
+            });
+            
+            if(complaintsRes.ok) {
+                const data = await complaintsRes.json();
+                // Store globally
+                pendingComplaints = data.filter(c => c.status !== 'resolved' && c.status !== 'closed');
+                
+                const total = data.length;
+                const resolved = data.filter(c => c.status === 'resolved' || c.status === 'closed').length;
+                const pending = total - resolved;
+
+                document.getElementById("statSubmitted").textContent = total;
+                document.getElementById("statResolved").textContent = resolved;
+                document.getElementById("statPending").textContent = pending;
+                document.getElementById("pendingBadge").textContent = pending;
+
+                document.getElementById("statFillSubmitted").style.width = total > 0 ? "100%" : "0%";
+                document.getElementById("statFillResolved").style.width = total > 0 ? \`\${(resolved/total)*100}%\` : "0%";
+                document.getElementById("statFillPending").style.width = total > 0 ? \`\${(pending/total)*100}%\` : "0%";
+                
+                // Also update the table if it's already open
+                const panel = document.getElementById('pendingPanel');
+                if(panel && panel.classList.contains('open')) {
+                    buildTable();
+                }
+            }
+        } catch(e) {
+            console.error(e);
+        }
+    }
+
+    loadData();
+  </script>
 </body>
 </html>
