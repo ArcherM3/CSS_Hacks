@@ -25,9 +25,9 @@
         <a href="role.html" class="login-btn">Login</a>
         <a href="signup.html" class="sign_up-btn">Sign Up</a>
       </span>
-      <span id="profile-section" style="display:none;">
-        <a href="stud-profile.html">
-          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="profile-icon">
+      <span id="profile-section" style="display:none; margin-left: 1rem; align-items: center;">
+        <a href="stud-profile.html" id="profile-link">
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="nav-profile-icon" class="profile-icon" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--clr-copper);">
         </a>
       </span>
     </nav>
@@ -235,8 +235,20 @@
   <script>
     // Login / profile toggle
     const isLoggedIn = localStorage.getItem("loggedIn");
-    document.getElementById("auth-section").style.display    = isLoggedIn === "true" ? "none"         : "flex";
-    document.getElementById("profile-section").style.display = isLoggedIn === "true" ? "inline-block" : "none";
+    const userRole = localStorage.getItem("userRole") || "student";
+    const userAvatar = localStorage.getItem("userAvatar");
+
+    document.getElementById("auth-section").style.display = isLoggedIn === "true" ? "none" : "flex";
+    const profileSection = document.getElementById("profile-section");
+    if(isLoggedIn === "true") {
+        profileSection.style.display = "inline-flex";
+        document.getElementById("profile-link").href = userRole === "admin" ? "admin-profile.html" : "stud-profile.html";
+        if(userAvatar) {
+            document.getElementById("nav-profile-icon").src = "https://web-wizards-backend.onrender.com/" + userAvatar;
+        }
+    } else {
+        profileSection.style.display = "none";
+    }
 
     // Efficiency widget
     function updateEfficiencyWidget() {
