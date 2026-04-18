@@ -31,6 +31,9 @@ body {
 .logo {
   color: #3B82F6; /* Electric Blue */
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
 }
 

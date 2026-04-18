@@ -38,10 +38,15 @@ fileInput.addEventListener("change", () => {
     }
 });
 
-// Admin link click
-// Admin link click → go to admin signup page
+
 const adminLink = document.querySelector(".admin-link");
 
 adminLink.addEventListener("click", () => {
     window.location.href = "admin-signup.html";
+});
+const signupBtn = document.querySelector(".signup-btn");
+
+signupBtn.addEventListener("click", function() {
+    localStorage.setItem("loggedIn", "true");
+    window.location.href = "home_page.html";
 });

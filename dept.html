@@ -1,136 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusResolve - Departments</title>
-    <link rel="stylesheet" href="dept.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CampusResolve — Departments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dept.css" />
 </head>
 <body>
 
-    <nav class="navbar">
-          <div class="navbar">
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
     <div class="nav-left">
-        <span class="menu-icon">☰</span>
-        <span class="logo">CampusResolve</span>
+      <div class="logo-mark">CR</div>
+      <a href="home_page.html" class="logo-name">CampusResolve</a>
     </div>
-
     <div class="nav-right">
-        <a href="home_page.html">Home</a>
-        <a href="complaint.html" >Raise a Complaint</a>
-        <a href="dept.html" class="active">Departments</a>
-        <span class="dots">•••</span>
+      <a href="home_page.html">Home</a>
+      <a href="complaint.html">Raise a complaint</a>
+      <a href="dept.html" class="active">Departments</a>
     </div>
+  </nav>
+
+  <!-- ── Page Header ── -->
+  <div class="page-header">
+    <span class="page-eyebrow">NIT Silchar · Campus Portal</span>
+    <h1 class="page-title">Browse <em>departments</em></h1>
+    <p class="page-sub">Select a department to raise your complaint. Every issue is automatically routed to the right team.</p>
+  </div>
+
+  <!-- ── Departments Grid ── -->
+  <section class="grid-section">
+    <div class="grid-container">
+
+      <div class="card" style="--d:0s">
+        <div class="card-header">
+          <div class="card-header-icon">📚</div>
+          <h2 class="card-title">Academics</h2>
+        </div>
+        <div class="card-image">
+          <img src="academics1.jpg" alt="Academics">
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Study-related issues</li>
+            <li>Books &amp; syllabus</li>
+          </ul>
+          <span class="card-tag tag-copper">Academic Affairs</span>
+        </div>
       </div>
-    </nav>
 
-    <main class="grid-container">
-        <div class="card">
-            <div class="card-header">Academics</div>
-            <div class="card-body">
-                <div class="card-image"><img src="academics1.jpg" alt="Academics"></div>
-                <ul>
-                    <li>Study-related issues</li>
-                    <li>Books & syllabus</li>
-                </ul>
-            </div>
+      <div class="card" style="--d:0.05s">
+        <div class="card-header">
+          <div class="card-header-icon">🏗️</div>
+          <h2 class="card-title">Infrastructure</h2>
+        </div>
+        <div class="card-image">
+          <img src="infrastructure1.jpg" alt="Infrastructure">
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Broken desks</li>
+            <li>Classroom facilities</li>
+          </ul>
+          <span class="card-tag tag-green">Facilities</span>
+        </div>
+      </div>
+
+      <div class="card" style="--d:0.1s">
+        <div class="card-header">
+          <div class="card-header-icon">💻</div>
+          <h2 class="card-title">IT</h2>
+        </div>
+        <div class="card-image">
+          <img src="IT1.jpg" alt="IT">
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>WiFi issues</li>
+            <li>Portal / login errors</li>
+          </ul>
+          <span class="card-tag tag-mint">Tech Support</span>
+        </div>
+      </div>
+
+      <div class="card" style="--d:0.15s">
+        <div class="card-header">
+          <div class="card-header-icon">🏠</div>
+          <h2 class="card-title">Hostel</h2>
+        </div>
+        <div class="card-image">
+          <img src="hostel1.jpg" alt="Hostel">
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Room maintenance</li>
+            <li>Water / electricity</li>
+          </ul>
+          <span class="card-tag tag-copper">Hostel Affairs</span>
+        </div>
+      </div>
+
+      <div class="card" style="--d:0.2s">
+        <div class="card-header">
+          <div class="card-header-icon">🍽️</div>
+          <h2 class="card-title">Mess</h2>
+        </div>
+        <div class="card-image">
+          <img src="messfood1.jpg" alt="Mess">
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Food quality</li>
+            <li>Hygiene issues</li>
+          </ul>
+          <span class="card-tag tag-pink">Dining Services</span>
+        </div>
+      </div>
+
+      <div class="card" style="--d:0.25s">
+        <div class="card-header">
+          <div class="card-header-icon">🔒</div>
+          <h2 class="card-title">Security</h2>
+        </div>
+        <div class="card-image">
+          <img src="security2.jpg" alt="Security">
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Safety concerns</li>
+            <li>Unauthorised entry</li>
+          </ul>
+          <span class="card-tag tag-green">Campus Safety</span>
+        </div>
+      </div>
+
+      <div class="card" style="--d:0.3s">
+        <div class="card-header">
+          <div class="card-header-icon">📖</div>
+          <h2 class="card-title">Library</h2>
+        </div>
+        <div class="card-image">
+          <img src="library.jpg" alt="Library">
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Book availability</li>
+            <li>Reading space</li>
+          </ul>
+          <span class="card-tag tag-mint">Library Services</span>
+        </div>
+      </div>
+
+      <div class="card" style="--d:0.35s">
+        <div class="card-header">
+          <div class="card-header-icon">🚌</div>
+          <h2 class="card-title">Transport</h2>
+        </div>
+        <div class="card-image">
+          <img src="transport2.jpg" alt="Transport">
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Bus delays</li>
+            <li>Route issues</li>
+          </ul>
+          <span class="card-tag tag-copper">Transportation</span>
+        </div>
+      </div>
+
+      <div class="card" style="--d:0.4s">
+        <div class="card-header">
+          <div class="card-header-icon">🏥</div>
+          <h2 class="card-title">Medical</h2>
+        </div>
+        <div class="card-image">
+          <img src="medical1.jpg" alt="Medical">
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Health services</li>
+            <li>Emergency support</li>
+          </ul>
+          <span class="card-tag tag-pink">Health Centre</span>
+        </div>
+      </div>
+
+      <div class="card" style="--d:0.45s">
+        <div class="card-header">
+          <div class="card-header-icon">🗂️</div>
+          <h2 class="card-title">Administration</h2>
+        </div>
+        <div class="card-image">
+          <img src="administration1.jpg" alt="Administration">
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Document issues</li>
+            <li>General complaints</li>
+          </ul>
+          <span class="card-tag tag-green">Admin Office</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-mark">CR</div>
+        <h2 class="footer-name">CampusResolve</h2>
+      </div>
+
+      <div class="footer-body">
+        <div class="footer-info-block">
+          <img src="NITS.svg" class="footer-nits-logo" alt="NIT Silchar">
+          <div class="footer-address">
+            <p>National Institute of Technology Silchar,</p>
+            <p>Cachar, Assam, India</p>
+            <p>Tel : +91 3842-224-797</p>
+            <p>Email: director@nits.ac.in</p>
+          </div>
         </div>
 
-        <div class="card">
-            <div class="card-header">Infrastructure</div>
-            <div class="card-body">
-                <div class="card-image"><img src="infrastructure1.jpg" alt="Infrastructure"></div>
-                <ul>
-                    <li>Broken desks</li>
-                    <li>Classroom facilities</li>
-                </ul>
-            </div>
+        <div class="footer-contact">
+          <h3>For queries, contact</h3>
+          <p>+91 7896637401</p>
+          <p>+91 7099683180</p>
+          <p>+91 7010976847</p>
+          <p>+91 9004230955</p>
         </div>
+      </div>
 
-        <div class="card">
-            <div class="card-header">IT</div>
-            <div class="card-body">
-                <div class="card-image"><img src="IT1.jpg" alt="IT"></div>
-                <ul>
-                    <li>WiFi issues</li>
-                    <li>Portal/login errors</li>
-                </ul>
-            </div>
-        </div>
+      <div class="footer-divider"></div>
 
-        <div class="card">
-            <div class="card-header">Hostel</div>
-            <div class="card-body">
-                <div class="card-image"><img src="hostel1.jpg" alt="Hostel"></div>
-                <ul>
-                    <li>Room maintenance</li>
-                    <li>Water/electricity</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">Mess</div>
-            <div class="card-body">
-                <div class="card-image"><img src="messfood1.jpg" alt="Mess"></div>
-                <ul>
-                    <li>Food quality</li>
-                    <li>Hygiene issues</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">Security</div>
-            <div class="card-body">
-                <div class="card-image"><img src="security2.jpg" alt="Security"></div>
-                <ul>
-                    <li>Safety concerns</li>
-                    <li>Unauthorized entry</li>
-                </ul>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">Library</div>
-            <div class="card-body">
-                <div class="card-image"><img src="library.jpg" alt="library"></div>
-                <ul>
-                    <li>Book availability</li>
-                    <li>Reading space</li>
-                </ul>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">Transport</div>
-            <div class="card-body">
-                <div class="card-image"><img src="transport2.jpg" alt="Transport"></div>
-                <ul>
-                    <li>Bus delays</li>
-                    <li>Route issues</li>
-                </ul>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">Medical</div>
-            <div class="card-body">
-                <div class="card-image"><img src="medical1.jpg" alt="Medical"></div>
-                <ul>
-                    <li>Health services</li>
-                    <li>Emergency support</li>
-                </ul>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">Administration</div>
-            <div class="card-body">
-                <div class="card-image"><img src="administration1.jpg" alt="Administration"></div>
-                <ul>
-                    <li>Document issues</li>
-                     <li>General complaints</li>
-                </ul>
-            </div>
-        </div>
-    </main>
+      <div class="footer-bottom">
+        <p>© 2026 CampusResolve</p>
+        <p>All rights reserved · Designed &amp; Developed by WebWizards</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

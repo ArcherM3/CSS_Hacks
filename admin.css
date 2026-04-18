@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* 🔥 NAVBAR */
+.navbar {
+  background: #0F172A;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.navbar a {
+  color: #F8FAFC;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  background: #3B82F6;
+  transform: scale(1.1);
+}
+
+.navbar a.active {
+  background: #3B82F6;
+}
+
+/* HEADER */
+.header {
+  background: #0F172A;
+  padding: 25px;
+  text-align: center;
+  color: #F8FAFC;
+}
+
+/* BODY */
+body {
+  background: #F5F5DC;
+}
+
+/* 🔥 FILTER BOX */
+.filter-box {
+  background: #3B82F6;
+  padding: 30px 40px;
+  margin: 30px auto;
+  width: 450px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(59,130,246,0.6);
+}
+
+.filter-title {
+  color: white;
+  font-size: 20px;
+}
+
+/* STATS */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.stat-card {
+  background: #3B82F6;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 6px 15px rgba(59,130,246,0.4);
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+/* LAYOUT */
+.container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+/* SECTIONS */
+.section {
+  background: #3B82F6;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  color: white;
+}
+
+/* STATUS COLORS */
+.pending { color: #EF4444; }
+.progress { color: #F59E0B; }
+.resolved { color: #10B981; }
+
+/* CARDS */
+.card {
+  background: #F8FAFC;
+  color: #0F172A;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* DETAILS */
+details summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+.extra {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+/* DEPT TAG */
+.dept {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  display: inline-block;
+  color: white;
+}
+
+.hostel { background: #3B82F6; }
+
+/* BUTTONS */
+.actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.progress-btn { background: #F59E0B; color: white; }
+.resolve-btn { background: #10B981; color: white; }
+.assign-btn { background: #3B82F6; color: white; }
+.delete-btn { background: #EF4444; color: white; }
+
+.done {
+  color: #10B981;
+  font-weight: bold;
+}

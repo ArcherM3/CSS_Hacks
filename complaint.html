@@ -1,101 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Campus Issue Management</title>
-    <link rel="stylesheet" href="complaint.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CampusResolve — Raise a Complaint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="complaint.css" />
 </head>
 <body>
 
-    <div class="navbar">
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
     <div class="nav-left">
-        <span class="menu-icon">☰</span>
-        <span class="logo">CampusResolve</span>
+      <div class="logo-mark">CR</div>
+      <a href="home_page.html" class="logo-name">CampusResolve</a>
     </div>
-
     <div class="nav-right">
-        <a href="home_page.html">Home</a>
-        <a href="complaint.html" class="active">Raise a Complaint</a>
-        <a href="dept.html">Departments</a>
-        <span class="dots">•••</span>
+      <a href="home_page.html">Home</a>
+      <a href="complaint.html" class="active">Raise a complaint</a>
+      <a href="dept.html">Departments</a>
     </div>
-</div>
-<!-- Header -->
-<div class="header">
-    <div class="header-icon">!</div>
-    <div class="header-text">
-        <h1>Raise a Complaint</h1>
-        <p>Submit your issue and it will be automatically routed to the concerned department.</p>
+  </nav>
+
+  <!-- ── Page Header ── -->
+  <div class="page-header">
+    <div class="header-icon-wrap">✉️</div>
+    <div class="header-text-wrap">
+      <span>NIT Silchar · Campus Portal</span>
+      <h1>Raise a <em>complaint</em></h1>
+      <p>Submit your issue and it will be automatically routed to the concerned department.</p>
     </div>
-</div>
+  </div>
 
-<!-- Main Container -->
- <div class="container">
-    <!-- <div class="title">Raise a Complaint</div>
-    <div class="subtitle">
-        Submit your issue and it will be automatically routed to the concerned department.
-    </div> --> 
+  <!-- ── Form Section ── -->
+  <section class="form-section">
+    <div class="container">
 
-    <form>
-        <div class="form-row">
+      <form>
+
+        <!-- Personal Details -->
+        <div class="form-block">
+          <span class="form-section-label">Personal details</span>
+          <div class="form-row">
             <div class="form-group">
-                <label>Full Name <span>*</span></label>
-                <input type="text" placeholder="Enter your full name">
+              <label>Full Name <span>*</span></label>
+              <input type="text" placeholder="Enter your full name">
             </div>
-
             <div class="form-group">
-                <label>Scholar ID <span>*</span></label>
-                <input type="text" placeholder="e.g. 25CS10072`  `">
+              <label>Scholar ID <span>*</span></label>
+              <input type="text" placeholder="e.g. 25CS10072">
             </div>
-        
+            <div class="form-group">
+              <label>Phone Number <span>*</span></label>
+              <input type="tel" placeholder="Enter your phone number">
+            </div>
+          </div>
+        </div>
 
-         <div class="form-group">
-        <label>Phone Number <span>*</span></label>
-        <input type="number" placeholder="Enter your phone number">
-    </div>
-</div>
+        <!-- Complaint Details -->
+        <div class="form-block">
+          <span class="form-section-label">Complaint details</span>
 
-        <div class="form-group mb">
+          <div class="form-group mb">
             <label>Concerned Department <span>*</span></label>
             <select>
-                <option>Select department</option>
-                <option>Hostel</option>
-                <option>Mess</option>
-                <option>Infrastructure</option> 
-                <option>Academic</option>
-                <option>Administration</option>
-                <option>IT</option>
-                <option>Transport</option>
-                <option>Security</option>
-                <option>Anti-Ragging Cell</option>
-                <option>Personal</option>
-                <option>Others</option>
-               
+              <option value="">Select department</option>
+              <option>Hostel</option>
+              <option>Mess</option>
+              <option>Infrastructure</option>
+              <option>Academic</option>
+              <option>Administration</option>
+              <option>IT</option>
+              <option>Transport</option>
+              <option>Security</option>
+              <option>Anti-Ragging Cell</option>
+              <option>Personal</option>
+              <option>Others</option>
             </select>
-        </div>
+          </div>
 
-        <div class="form-group mb">
-    <label>Problem Title <span>*</span></label>
-    <input type="text" placeholder="Enter a short title for the issue">
-</div>
-        <div class="form-group">
+          <div class="form-group mb">
+            <label>Problem Title <span>*</span></label>
+            <input type="text" placeholder="Enter a short title for the issue">
+          </div>
+
+          <div class="form-group">
             <label>Problem Description <span>*</span></label>
-            <textarea placeholder="Describe the issue in detail..."></textarea>
-            <div class="char-count">0/1000</div>
+            <textarea id="desc" placeholder="Describe the issue in detail..." maxlength="1000" oninput="document.getElementById('charCount').textContent = this.value.length + '/1000'"></textarea>
+            <div class="char-count" id="charCount">0/1000</div>
+          </div>
         </div>
 
-        <div class="form-group">
-            <label>Attach Files (optional)</label>
-            <div class="upload-box">
-                <div class="upload-icon">⬆️</div>
-                <div class="upload-text">Click to upload images or documents</div>
-                <div class="upload-sub">Max 5 files</div>
+        <!-- Attachments -->
+        <div class="form-block">
+          <span class="form-section-label">Attachments</span>
+          <div class="form-group">
+            <label>Attach Files <span style="color:rgba(41,36,33,0.4); font-weight:300;">(optional)</span></label>
+            <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+              <div class="upload-icon">📎</div>
+              <div class="upload-text">Click to upload images or documents</div>
+              <div class="upload-sub">Max 5 files · PNG, JPG, PDF accepted</div>
+              <input type="file" id="fileInput" multiple accept="image/*,.pdf" style="display:none">
             </div>
+          </div>
         </div>
 
-        <button class="btn">✈ Submit Complaint</button>
-    </form>
-</div>
+        <button type="submit" class="btn">✈ Submit Complaint</button>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-mark">CR</div>
+        <h2 class="footer-name">CampusResolve</h2>
+      </div>
+
+      <div class="footer-body">
+        <div class="footer-info-block">
+          <img src="NITS.svg" class="footer-nits-logo" alt="NIT Silchar">
+          <div class="footer-address">
+            <p>National Institute of Technology Silchar,</p>
+            <p>Cachar, Assam, India</p>
+            <p>Tel : +91 3842-224-797</p>
+            <p>Email: director@nits.ac.in</p>
+          </div>
+        </div>
+
+        <div class="footer-contact">
+          <h3>For queries, contact</h3>
+          <p>+91 7896637401</p>
+          <p>+91 7099683180</p>
+          <p>+91 7010976847</p>
+          <p>+91 9004230955</p>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p>© 2026 CampusResolve</p>
+        <p>All rights reserved · Designed &amp; Developed by WebWizards</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

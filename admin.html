@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hostel Dashboard - CampusFix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- 🔥 NAVBAR -->
+<div class="navbar">
+  <a href="admin-main.html">Home</a>
+  <a href="admin-hostel.html" class="active">Hostel</a>
+  <a href="admin-mess.html">Mess</a>
+  <a href="admin-academic.html">Academic</a>
+  <a href="admin-it.html">IT</a>
+  <a href="admin-transport.html">Transport</a>
+  <a href="admin-security.html">Security</a>
+  <a href="admin-antiragging.html">Anti-Ragging</a>
+  <a href="admin-personal.html">Personal</a>
+  <a href="admin-others.html">Others</a>
+  <a href="admin-profile.html">Profile</a>
+</div>
+
+<!-- 🔥 HEADER -->
+<div class="header">
+  <h1 class="title">Hostel Complaints </h1>
+</div>
+
+<!-- 🔥 BIG FILTER BOX -->
+<div class="filter-box">
+  <h2 class="filter-title">Department: Hostel</h2>
+</div>
+
+<!-- 📊 STATS -->
+<div class="stats">
+  <div class="stat-card">🔴 5 Pending</div>
+  <div class="stat-card">🟡 3 In Progress</div>
+  <div class="stat-card">🟢 10 Resolved</div>
+</div>
+
+<!-- 📦 MAIN -->
+<div class="container">
+
+  <!-- 🔴 PENDING -->
+  <div class="section">
+    <h2 class="pending">Pending</h2>
+
+    <details class="card">
+      <summary>
+        <span class="dept hostel">Hostel</span>
+        <p><strong>Fan not working</strong></p>
+        <p>Room 203</p>
+      </summary>
+
+      <div class="extra">
+        <p><strong>Student:</strong> Nadeem</p>
+        <p><strong>Email:</strong> nadeem@college.edu</p>
+        <p><strong>Description:</strong> Fan dead since 2 days</p>
+
+        <div class="actions">
+          <button class="progress-btn">Start</button>
+          <button class="assign-btn">Assign</button>
+          <button class="delete-btn">Delete</button>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- 🟡 IN PROGRESS -->
+  <div class="section">
+    <h2 class="progress">In Progress</h2>
+
+    <details class="card">
+      <summary>
+        <span class="dept hostel">Hostel</span>
+        <p><strong>Water leakage</strong></p>
+        <p>Room 110</p>
+      </summary>
+
+      <div class="extra">
+        <p><strong>Student:</strong> Rahul</p>
+        <p><strong>Description:</strong> Pipe leaking badly</p>
+
+        <div class="actions">
+          <button class="resolve-btn">Resolve</button>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- 🟢 RESOLVED -->
+  <div class="section">
+    <h2 class="resolved">Resolved</h2>
+
+    <details class="card">
+      <summary>
+        <span class="dept hostel">Hostel</span>
+        <p><strong>Light issue</strong></p>
+        <p>Room 305</p>
+      </summary>
+
+      <div class="extra">
+        <p><strong>Student:</strong> Aman</p>
+        <p class="done">✔ Completed</p>
+      </div>
+    </details>
+
+  </div>
+
+</div>
+
+</body>
+</html>
