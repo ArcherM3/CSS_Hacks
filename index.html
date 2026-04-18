@@ -18,6 +18,7 @@
     <p class="tagline">Report. Track. Resolve.</p>
 
     <form onsubmit="handleLogin(event)">
+      <input type="text" id="username" placeholder="Username" required>
       <input type="email" id="email" placeholder="College Email" required>
       <input type="password" id="password" placeholder="Password" required>
 
@@ -29,21 +30,61 @@
 </div>
 
 <script>
-  function handleLogin(event) {
+  async function handleLogin(event) {
     event.preventDefault();
 
+    const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-    if (!email.endsWith("@cse.nits.ac.in")) {
-      alert("Use college email only 😭");
-      return;
-    }
+    const params = new URLSearchParams(window.location.search);
+    const role = params.get("role") || "student"; 
 
-    // Temporary demo logic
-    if (email === "admin@college.edu") {
-      alert("Redirecting to Admin Dashboard...");
-    } else {
-      alert("Redirecting to Student Dashboard...");
+    const endpoint = role === "admin" 
+      ? "https://web-wizards-backend.onrender.com/auth/login/admin"
+      : "https://web-wizards-backend.onrender.com/auth/login/student";
+
+    const payload = {
+        username: username,
+        college_email: email,
+        password: password
+    };
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.setItem("loggedIn", "true");
+        // token key might be 'token', 'access_token', etc.
+        const token = data.token || data.access_token || data["authentication token"];
+        if(role === "admin") {
+          if(token) localStorage.setItem("adminToken", token);
+          localStorage.setItem("userRole", "admin");
+          try {
+            const pRes = await fetch("https://web-wizards-backend.onrender.com/admin/me", {headers: {"Authorization": "Bearer " + token}});
+            if(pRes.ok) { const pData = await pRes.json(); if(pData.avatar) localStorage.setItem("userAvatar", pData.avatar); }
+          } catch(e) {}
+          window.location.href = "admin-profile.html";
+        } else {
+          if(token) localStorage.setItem("studentToken", token);
+          localStorage.setItem("userRole", "student");
+          try {
+            const pRes = await fetch("https://web-wizards-backend.onrender.com/student/me", {headers: {"Authorization": "Bearer " + token}});
+            if(pRes.ok) { const pData = await pRes.json(); if(pData.avatar) localStorage.setItem("userAvatar", pData.avatar); }
+          } catch(e) {}
+          window.location.href = "home_page.html";
+        }
+      } else {
+        alert(data.detail || "Login failed");
+      }
+    } catch(err) {
+      alert("Error connecting to server");
+      console.error(err);
     }
   }
 </script>
