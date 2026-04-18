@@ -37,7 +37,7 @@
 
     <form id="adminForm">
         <label>Name</label>
-        <input type="text" id="name" required>
+        <input type="text" id="name" pattern="[A-Za-z ]+" title="Name should only contain letters" required>
 
         <label>Email</label>
         <input type="email" id="email" required>
@@ -48,16 +48,22 @@
         <label>Admin ID</label>
         <input type="text" id="admin_id" required>
 
+        <label>Phone Number</label>
+        <input type="text" id="phone" pattern="\d{10}" title="Phone number should be exactly 10 digits" required>
+
         <label>Department</label>
         <select id="department" required>
             <option value="" disabled selected>Select Department</option>
+            <option value="Academics">Academics</option>
+            <option value="Infrastructure">Infrastructure</option>
+            <option value="IT">IT</option>
             <option value="Hostel">Hostel</option>
-            <option value="Maintenance">Maintenance</option>
-            <option value="Academic">Academic</option>
-            <option value="Sports">Sports</option>
-            <option value="Canteen">Canteen</option>
-            <option value="Finance">Finance</option>
+            <option value="Mess">Mess</option>
             <option value="Security">Security</option>
+            <option value="Library">Library</option>
+            <option value="Transport">Transport</option>
+            <option value="Medical">Medical</option>
+            <option value="Administration">Administration</option>
         </select>
 
         <div class="photo-upload">
