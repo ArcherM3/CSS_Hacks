@@ -17,10 +17,19 @@
       <div class="logo-mark">CR</div>
       <a href="home_page.html" class="logo-name">CampusResolve</a>
     </div>
-    <div class="nav-right">
+    <div class="nav-right" style="display:flex; align-items:center;">
       <a href="home_page.html">Home</a>
       <a href="complaint.html" class="active">Raise a complaint</a>
       <a href="dept.html">Departments</a>
+      <span id="auth-section" style="margin-left: 1rem;">
+        <a href="role.html" class="login-btn" style="color:var(--clr-copper); text-decoration:none; margin-right: 0.5rem;">Login</a>
+        <a href="signup.html" class="sign_up-btn" style="background:var(--clr-copper); color:#fff; padding:0.5rem 1rem; border-radius:20px; text-decoration:none;">Sign Up</a>
+      </span>
+      <span id="profile-section" style="display:none; margin-left: 1rem; align-items: center;">
+        <a href="stud-profile.html" id="profile-link">
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="nav-profile-icon" class="profile-icon" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 2px solid var(--clr-copper);">
+        </a>
+      </span>
     </div>
   </nav>
 
@@ -38,7 +47,7 @@
   <section class="form-section">
     <div class="container">
 
-      <form>
+      <form id="complaintForm">
 
         <!-- Personal Details -->
         <div class="form-block">
@@ -54,7 +63,7 @@
             </div>
             <div class="form-group">
               <label>Phone Number <span>*</span></label>
-              <input type="tel" placeholder="Enter your phone number">
+              <input type="tel" id="phone_number" placeholder="Enter your phone number" required>
             </div>
           </div>
         </div>
@@ -65,7 +74,7 @@
 
           <div class="form-group mb">
             <label>Concerned Department <span>*</span></label>
-            <select>
+            <select id="department" required>
               <option value="">Select department</option>
               <option>Hostel</option>
               <option>Mess</option>
@@ -83,7 +92,7 @@
 
           <div class="form-group mb">
             <label>Problem Title <span>*</span></label>
-            <input type="text" placeholder="Enter a short title for the issue">
+            <input type="text" id="title" placeholder="Enter a short title for the issue" required>
           </div>
 
           <div class="form-group">
@@ -150,5 +159,70 @@
     </div>
   </footer>
 
+  <script>
+    const isLoggedIn = localStorage.getItem("loggedIn");
+    const userRole = localStorage.getItem("userRole") || "student";
+    const userAvatar = localStorage.getItem("userAvatar");
+
+    document.getElementById("auth-section").style.display = isLoggedIn === "true" ? "none" : "flex";
+    const profileSection = document.getElementById("profile-section");
+    if(isLoggedIn === "true") {
+        profileSection.style.display = "inline-flex";
+        document.getElementById("profile-link").href = userRole === "admin" ? "admin-profile.html" : "stud-profile.html";
+        if(userAvatar) {
+            document.getElementById("nav-profile-icon").src = "https://web-wizards-backend.onrender.com/" + userAvatar;
+        }
+    } else {
+        profileSection.style.display = "none";
+    }
+
+    document.getElementById("complaintForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const token = localStorage.getItem("studentToken");
+      if(!token) {
+        alert("You must be logged in to raise a complaint.");
+        window.location.href = "index.html?role=student";
+        return;
+      }
+
+      const phone_number = document.getElementById("phone_number").value;
+      const department = document.getElementById("department").value;
+      const title = document.getElementById("title").value;
+      const desc = document.getElementById("desc").value;
+      const fileInput = document.getElementById("fileInput");
+      const documentFile = fileInput.files[0];
+
+      if (!phone_number || !department || !title || !desc || !documentFile) {
+        alert("Please fill all fields and attach a document");
+        return;
+      }
+
+      const fd = new FormData();
+      fd.append("title", title);
+      fd.append("description", desc);
+      fd.append("department", department);
+      fd.append("phone_number", phone_number);
+      fd.append("document", documentFile);
+
+      try {
+        const res = await fetch("https://web-wizards-backend.onrender.com/complaints/complaint/raise", {
+          method: "POST",
+          headers: { "Authorization": "Bearer " + token },
+          body: fd
+        });
+        
+        if (res.ok) {
+          alert("Complaint raised successfully!");
+          window.location.href = "stud-profile.html";
+        } else {
+          const data = await res.json();
+          alert(data.detail || "Failed to raise complaint");
+        }
+      } catch (err) {
+        alert("Error connecting to server");
+      }
+    });
+  </script>
 </body>
 </html>
