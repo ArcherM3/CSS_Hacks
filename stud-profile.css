@@ -1,8 +1,9 @@
 /* ===== RESET & BASE ===== */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 :root {
@@ -36,75 +37,102 @@ body {
   line-height: 1.6;
 }
 
-/* ===== NAVBAR ===== */
+/* Navbar */
 .navbar {
-  background: var(--blue-primary);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  height: 68px;
-  position: sticky;
+  position: absolute;
+  width: 100%;
   top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 12px rgba(21, 101, 192, 0.35);
-}
-
-.nav-brand {
-  font-family: 'Space Mono', monospace;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.5px;
-}
-
-.nav-links {
+  left: 0;
+  padding: 20px 50px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  color: white;
+  z-index: 10;
 }
 
-.nav-link {
-  text-decoration: none;
-  color: rgba(255,255,255,0.82);
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 7px 18px;
-  border-radius: 30px;
-  transition: background 0.2s, color 0.2s;
-  letter-spacing: 0.2px;
+/* Hide helper */
+.hidden {
+  display: none !important;
 }
 
-.nav-link:hover {
-  background: rgba(255,255,255,0.15);
-  color: #fff;
+/* Avatar circle */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #4F46E5;
+  cursor: pointer;
 }
 
-.nav-link.active {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #fff;
+  vertical-align: middle;
+}
+.logo {
+  font-size: 20px;
   font-weight: 600;
 }
 
-.nav-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--red-accent);
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.05rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+.logo span {
+  margin-left: 8px;
 }
 
-.nav-avatar:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 0 4px rgba(255,255,255,0.45);
+/* Navigation */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ddd;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-links .active {
+  background: #1049a3;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: white;
+}
+
+.login-btn {
+  background: #144ca6;
+  padding: 8px 18px;
+  border-radius: 8px;
+  color: white;
+}
+
+.sign-up-btn {
+  border: 3px solid #144ca6;
+  padding: 6px 16px;
+  border-radius: 8px;
+  background-color: #3b4a55;
+}
+
+.profile-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 /* ===== MAIN ===== */
@@ -286,7 +314,6 @@ body {
 .stats-grid {
   display: flex;
   flex-direction: column;
-  gap: 0;
   background: #F8F9FB;
   padding: 24px 28px;
   gap: 16px;
@@ -371,7 +398,7 @@ body {
 .stat-resolved  .stat-fill { background: #2E7D32; }
 .stat-pending   .stat-fill { background: #E65100; }
 
-/* Link on pending */
+/* View all / stat-link button */
 .stat-link {
   display: inline-flex;
   align-items: center;
@@ -386,6 +413,9 @@ body {
   white-space: nowrap;
   transition: background 0.2s, color 0.2s;
   margin-left: auto;
+  border: none;
+  cursor: pointer;
+  font-family: 'Sora', sans-serif;
 }
 
 .stat-link:hover {
@@ -561,29 +591,45 @@ body {
   letter-spacing: 0.3px;
 }
 
-/* stat-link as button */
-.stat-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  text-decoration: none;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #E65100;
-  background: #FFF3E0;
-  padding: 6px 14px;
-  border-radius: 20px;
-  white-space: nowrap;
-  transition: background 0.2s, color 0.2s;
-  margin-left: auto;
-  border: none;
-  cursor: pointer;
-  font-family: 'Sora', sans-serif;
+/* Stat count loading shimmer */
+.stat-loading {
+  color: transparent !important;
+  background: linear-gradient(90deg, #E2E8F0 25%, #EEF0F4 50%, #E2E8F0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 6px;
+  min-width: 40px;
+  display: inline-block;
 }
 
-.stat-link:hover {
-  background: #E65100;
-  color: #fff;
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Complaint ID column */
+.row-id {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--blue-primary);
+  background: #E3F2FD;
+  padding: 3px 8px !important;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* Loading / error state rows */
+.table-state-row td {
+  padding: 28px 16px;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.table-state-row.error td {
+  color: #C62828;
 }
 
 /* ===== ANIMATIONS ===== */
@@ -603,4 +649,69 @@ body {
   .main { padding: 24px 16px 48px; }
   .stats-grid { padding: 16px; }
   .dashboard-header { padding: 14px 20px; }
+}
+
+.footer {
+  background: #1143ba;
+  color: white;
+  padding: 25px 50px 10px; 
+  width: 100%;
+}
+
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Logo size */
+.footer-logo {
+  width: 70px;
+  height: auto;
+}
+
+/* Text */
+.footer-text p {
+  margin: 3px 0;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  margin-top: 15px;
+  padding-top: 10px;
+  font-size: 13px;
+
+  display: flex;                
+  justify-content: space-between; 
+  align-items: center;
+}
+/* Right side */
+.footer-top {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.footer-right {
+  margin-left: auto;   /* pushes to extreme right */
+  text-align: right;
+}
+
+/* Optional spacing tweak */
+.footer-left {
+  flex: 1;
+}
+
+.line {
+  background-color: #7baae0;
+  height: 2px;
+  margin: 8px 0px;
+}
+
+.spacing{
+  background-color: #1143ba;
+  height: 10px;
 }

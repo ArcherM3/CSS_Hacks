@@ -6,7 +6,107 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  /* left: 0; */
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  z-index: 10;
+}
+
+/* Hide helper */
+.hidden {
+  display: none !important;
+}
+
+/* Avatar circle */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #4F46E5;
+  cursor: pointer;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #fff;
+  vertical-align: middle;
+}
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.logo span {
+  margin-left: 8px;
+}
+
+/* Navigation */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ddd;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-links .active {
+  background: #1049a3;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: white;
+}
+
+.login-btn {
+  background: #144ca6;
+  padding: 8px 18px;
+  border-radius: 8px;
+  color: white;
+}
+
+.sign-up-btn {
+  border: 3px solid #144ca6;
+  padding: 6px 16px;
+  border-radius: 8px;
+  background-color: #3b4a55;
+}
+
+.profile-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 
 .container {
     background: #bfc3c7;
@@ -35,8 +135,8 @@ input {
     background: #d9dde1;
 }
 
-button {
-    margin-top: 50px;
+button[type="submit"] {
+    margin-top: 25px;
     width: 100%;
     padding: 10px;
     background: #0d2347;
@@ -55,3 +155,38 @@ button:hover {
     margin-top: 15px;
     font-weight: bold;
 }
+
+/* Photo Upload Styles */
+.photo-upload {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.photo-btn {
+    flex-grow: 1;
+    background: #4a5568;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 0;
+}
+
+.plus-btn {
+    width: 40px;
+    background: #2d3748;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.photo-btn:hover, .plus-btn:hover {
+    opacity: 0.9;
+}

@@ -1,6 +1,6 @@
 // Select elements
-const photoBtn = document.querySelector(".photo-btn");
-const plusBtn = document.querySelector(".plus-btn");
+const photoBtn = document.getElementById("photoBtn");
+const plusBtn = document.getElementById("plusBtn");
 
 // Create hidden file input
 const fileInput = document.createElement("input");
@@ -38,10 +38,66 @@ fileInput.addEventListener("change", () => {
     }
 });
 
-// Admin link click
-// Admin link click → go to admin signup page
-const adminLink = document.querySelector(".admin-link");
 
+const adminLink = document.getElementById("adminLink");
 adminLink.addEventListener("click", () => {
     window.location.href = "admin-signup.html";
+});
+
+const signupBtn = document.getElementById("signupBtn");
+signupBtn.addEventListener("click", async function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const college_email = document.getElementById("college_email").value;
+    const password = document.getElementById("password").value;
+    const sch_id = document.getElementById("sch_id").value;
+    const message = document.getElementById("message");
+
+    // Ensure all required fields are filled
+    if (!username || !college_email || !password || !sch_id) {
+        message.style.color = "red";
+        message.innerText = "Please fill all fields!";
+        return;
+    }
+
+    try {
+        // Construct FormData for multipart/form-data as expected by the backend
+        const formData = new FormData();
+        formData.append("username", username);
+        formData.append("college_email", college_email);
+        formData.append("password", password);
+        formData.append("sch_id", sch_id);
+        
+        // Append selected file or a dummy file if not selected
+        if (fileInput.files[0]) {
+            formData.append("avatar", fileInput.files[0]);
+        } else {
+            formData.append("avatar", new Blob([]), "placeholder.png");
+        }
+
+        // Send POST request to backend
+        const response = await fetch("https://web-wizards-backend.onrender.com/auth/signup/student", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            message.style.color = "green";
+            message.innerText = data.message || "Registration successful!";
+            // Redirect to login page
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 1000);
+        } else {
+            message.style.color = "red";
+            message.innerText = data.detail || "Registration failed";
+        }
+    } catch (error) {
+        console.error(error);
+        message.style.color = "red";
+        message.innerText = "Server error!";
+    }
 });

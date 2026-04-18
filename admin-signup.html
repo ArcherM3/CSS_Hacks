@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <title>Admin Signup</title>
     <link rel="stylesheet" href="admin-signup.css">
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
 
+    <!-- Navbar -->
+  <header class="navbar solid">
+    <a href="home_page.html" class="logo">
+      ☰ <span>CampusResolve</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="home_page.html">Home</a>
+      <a href="complaint.html">Raise a complaint</a>
+      <a href="dept1.html">Departments</a>
+
+      <span id="auth-section">
+        <a href="role.html" class="login-btn">Login</a>
+        <a href="signup2.html" class="sign_up-btn">Sign Up</a>
+      </span>
+
+      <span id="profile-section">
+        <a href="stud-profile.html" id="profile-link">
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profile-icon-img" class="profile-icon" alt="Profile">
+        </a>
+      </span>
+    </nav>
+  </header>
+  <div class="page-content">
 <div class="container">
     <h2>Sign up as Admin</h2>
 
@@ -20,15 +45,35 @@
         <label>Password</label>
         <input type="password" id="password" required>
 
+        <label>Admin ID</label>
+        <input type="text" id="admin_id" required>
+
         <label>Department</label>
-        <input type="text" id="department" required>
+        <select id="department" required>
+            <option value="" disabled selected>Select Department</option>
+            <option value="Hostel">Hostel</option>
+            <option value="Maintenance">Maintenance</option>
+            <option value="Academic">Academic</option>
+            <option value="Sports">Sports</option>
+            <option value="Canteen">Canteen</option>
+            <option value="Finance">Finance</option>
+            <option value="Security">Security</option>
+        </select>
+
+        <div class="photo-upload">
+            <button class="photo-btn" type="button" id="photoBtn">Add Your Photo</button>
+            <button class="plus-btn" type="button" id="plusBtn">+</button>
+        </div>
+        <input type="file" id="avatarInput" accept="image/*" style="display: none;">
 
         <button type="submit">Sign Up</button>
     </form>
 
     <p id="message"></p>
 </div>
+</div>
 
+<script src="navbar.js"></script>
 <script src="admin-signup.js"></script>
 </body>
 </html>

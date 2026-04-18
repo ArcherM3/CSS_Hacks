@@ -4,22 +4,33 @@
     <meta charset="UTF-8">
     <title>Campus Issue Management</title>
     <link rel="stylesheet" href="complaint.css">
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
 
-    <div class="navbar">
-    <div class="nav-left">
-        <span class="menu-icon">☰</span>
-        <span class="logo">CampusResolve</span>
-    </div>
+   <!-- Navbar -->
+  <header class="navbar solid">
+    <a href="home_page.html" class="logo">
+      ☰ <span>CampusResolve</span>
+    </a>
 
-    <div class="nav-right">
-        <a href="home_page.html">Home</a>
-        <a href="complaint.html" class="active">Raise a Complaint</a>
-        <a href="dept.html">Departments</a>
-        <span class="dots">•••</span>
-    </div>
-</div>
+    <nav class="nav-links">
+      <a href="home_page.html">Home</a>
+      <a href="complaint.html">Raise a complaint</a>
+      <a href="dept1.html">Departments</a>
+
+      <span id="auth-section">
+        <a href="role.html" class="login-btn">Login</a>
+        <a href="signup2.html" class="sign_up-btn">Sign Up</a>
+      </span>
+
+      <span id="profile-section">
+        <a href="stud-profile.html" id="profile-link">
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profile-icon-img" class="profile-icon" alt="Profile">
+        </a>
+      </span>
+    </nav>
+  </header>
 <!-- Header -->
 <div class="header">
     <div class="header-icon">!</div>
@@ -31,71 +42,171 @@
 
 <!-- Main Container -->
  <div class="container">
-    <!-- <div class="title">Raise a Complaint</div>
-    <div class="subtitle">
-        Submit your issue and it will be automatically routed to the concerned department.
-    </div> --> 
-
-    <form>
+    <form id="complaintForm">
         <div class="form-row">
             <div class="form-group">
                 <label>Full Name <span>*</span></label>
-                <input type="text" placeholder="Enter your full name">
+                <input type="text" id="fullName" placeholder="Enter your full name" required>
             </div>
 
             <div class="form-group">
                 <label>Scholar ID <span>*</span></label>
-                <input type="text" placeholder="e.g. 25CS10072`  `">
+                <input type="text" id="scholarId" placeholder="e.g. 25CS10072" required>
             </div>
         
 
          <div class="form-group">
         <label>Phone Number <span>*</span></label>
-        <input type="number" placeholder="Enter your phone number">
+        <input type="text" id="phone" placeholder="Enter your phone number" required>
     </div>
 </div>
 
         <div class="form-group mb">
             <label>Concerned Department <span>*</span></label>
-            <select>
-                <option>Select department</option>
-                <option>Hostel</option>
-                <option>Mess</option>
-                <option>Infrastructure</option> 
-                <option>Academic</option>
-                <option>Administration</option>
-                <option>IT</option>
-                <option>Transport</option>
-                <option>Security</option>
-                <option>Anti-Ragging Cell</option>
-                <option>Personal</option>
-                <option>Others</option>
-               
+            <select id="department" required>
+                <option value="">Select department</option>
+                <option value="Hostel">Hostel</option>
+                <option value="Mess">Mess</option>
+                <option value="Infrastructure">Infrastructure</option> 
+                <option value="Academic">Academic</option>
+                <option value="Administration">Administration</option>
+                <option value="IT">IT</option>
+                <option value="Transport">Transport</option>
+                <option value="Security">Security</option>
+                <option value="Anti-Ragging Cell">Anti-Ragging Cell</option>
+                <option value="Personal">Personal</option>
+                <option value="Others">Others</option>
             </select>
         </div>
 
         <div class="form-group mb">
-    <label>Problem Title <span>*</span></label>
-    <input type="text" placeholder="Enter a short title for the issue">
-</div>
+            <label>Problem Title <span>*</span></label>
+            <input type="text" id="title" placeholder="Enter a short title for the issue" required>
+        </div>
         <div class="form-group">
             <label>Problem Description <span>*</span></label>
-            <textarea placeholder="Describe the issue in detail..."></textarea>
+            <textarea id="description" placeholder="Describe the issue in detail..." required></textarea>
             <div class="char-count">0/1000</div>
         </div>
 
         <div class="form-group">
             <label>Attach Files (optional)</label>
-            <div class="upload-box">
+            <div class="upload-box" onclick="document.getElementById('fileInput').click()">
                 <div class="upload-icon">⬆️</div>
                 <div class="upload-text">Click to upload images or documents</div>
-                <div class="upload-sub">Max 5 files</div>
+                <div class="upload-sub" id="fileNameDisplay">Max 1 file</div>
+                <input type="file" id="fileInput" hidden>
             </div>
         </div>
 
-        <button class="btn">✈ Submit Complaint</button>
+        <button type="submit" class="btn">Submit Complaint</button>
+        <p id="message"></p>
     </form>
 </div>
 
+<!-- Footer -->
+ <footer class="footer">
+  <div class="footer-top">
+    <div class="footer-left">
+      <h2>CampusResolve</h2>
+      <div class="footer-info">
+        <img src="NITS.svg" class="footer-logo" alt="logo">
+        <div class="footer-text">
+          <p>National Institute of Technology Silchar,</p>
+          <p>Cachar, Assam, India</p>
+          <p>Tel : +91 3842-224-797</p>
+          <p>Email: director@nits.ac.in</p>
+        </div>
+        <div class="footer-right">
+          <h3>For queries, contact</h3>
+          <p>+91 7896637401</p>
+          <p>+91 7099683180</p>
+          <p>+91 7010976847</p>
+          <p>+91 9004230955</p>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div class="line"></div>
+  <div class="footer-bottom">
+    <p>© 2026 CampusResolve | All rights reserved | Designed & Developed by WebWizards</p>
+  </div>
+</footer>
+
+<script src="navbar.js"></script>
+<script>
+    // Character count for description
+    document.getElementById('description').addEventListener('input', function() {
+        document.querySelector('.char-count').innerText = `${this.value.length}/1000`;
+    });
+
+    document.getElementById('fileInput').addEventListener('change', function() {
+        const display = document.getElementById('fileNameDisplay');
+        if (this.files.length > 0) {
+            display.innerText = this.files[0].name;
+        }
+    });
+
+    document.getElementById('complaintForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const department = document.getElementById('department').value;
+        const phone = document.getElementById('phone').value;
+        const file = document.getElementById('fileInput').files[0];
+        const message = document.getElementById('message');
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            message.style.color = "red";
+            message.innerText = "You must be logged in to raise a complaint.";
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("department", department);
+        formData.append("phone_number", phone);
+        
+        // Backend requires document, so append a placeholder if none selected
+        if (file) {
+            formData.append("document", file);
+        } else {
+            formData.append("document", new Blob([]), "placeholder.txt");
+        }
+
+        try {
+            message.style.color = "blue";
+            message.innerText = "Submitting...";
+
+            const response = await fetch("https://web-wizards-backend.onrender.com/complaints/complaint/raise", {
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer " + token
+                },
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                message.style.color = "green";
+                message.innerText = "Complaint raised successfully!";
+                setTimeout(() => {
+                    window.location.href = "stud-profile.html";
+                }, 1500);
+            } else {
+                message.style.color = "red";
+                message.innerText = data.detail || "Failed to raise complaint.";
+            }
+        } catch (error) {
+            console.error(error);
+            message.style.color = "red";
+            message.innerText = "Server error!";
+        }
+    });
+</script>
 </body>
 </html>

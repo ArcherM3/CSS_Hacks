@@ -1,0 +1,117 @@
+/* Standardized Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background for different pages */
+.navbar.solid {
+    background-color: #1a2a4a;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.navbar.transparent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    color: white;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar .nav-links a:hover, 
+.navbar .nav-links a.active {
+    color: white;
+}
+
+.navbar .nav-links a.active {
+    background: #1049a3;
+    padding: 8px 18px;
+    border-radius: 8px;
+}
+
+.navbar .login-btn {
+    background: #144ca6;
+    padding: 8px 20px;
+    border-radius: 8px;
+    color: white !important;
+}
+
+.navbar .sign_up-btn {
+    border: 2px solid #144ca6;
+    padding: 6px 18px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white !important;
+}
+
+.navbar .profile-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #2d7cfa;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: #fff;
+}
+
+.navbar .profile-icon:hover {
+    transform: scale(1.1);
+    border-color: #fff;
+}
+
+#auth-section {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#profile-section {
+    display: none;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .nav-links {
+        gap: 15px;
+    }
+    .nav-links a {
+        font-size: 13px;
+    }
+}
