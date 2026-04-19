@@ -19,12 +19,35 @@ document.getElementById("adminForm").addEventListener("submit", async function(e
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let admin_id = document.getElementById("admin_id").value;
+    let phone = document.getElementById("phone").value;
     let department = document.getElementById("department").value;
     let avatarFile = avatarInput.files[0];
 
     let message = document.getElementById("message");
 
-    if (username && email && password && admin_id && department && avatarFile) {
+    // Constraints
+    const nameRegex = /^[A-Za-z ]+$/;
+    const phoneRegex = /^\d{10}$/;
+
+    if (!username || !email || !password || !admin_id || !phone || !department) {
+        message.style.color = "red";
+        message.innerText = "Please fill all fields!";
+        return;
+    }
+
+    if (!nameRegex.test(username)) {
+        message.style.color = "red";
+        message.innerText = "Name should only contain letters!";
+        return;
+    }
+
+    if (!phoneRegex.test(phone)) {
+        message.style.color = "red";
+        message.innerText = "Phone number should be exactly 10 digits!";
+        return;
+    }
+
+    if (avatarFile) {
         try {
             message.style.color = "blue";
             message.innerText = "Signing up...";
@@ -35,6 +58,7 @@ document.getElementById("adminForm").addEventListener("submit", async function(e
             formData.append("password", password);
             formData.append("id", admin_id); 
             formData.append("department", department);
+            formData.append("phone_number", phone);
             formData.append("avatar", avatarFile); 
 
             let response = await fetch("https://web-wizards-backend.onrender.com/auth/signup/admin", {
@@ -53,8 +77,12 @@ document.getElementById("adminForm").addEventListener("submit", async function(e
                 }, 1500);
             } else {
                 message.style.color = "red";
-                message.innerText = data.detail?.[0]?.msg || data.detail || "Submission failed";
-                console.error("Signup failed:", data);
+                if (data.detail && Array.isArray(data.detail)) {
+                    message.innerText = data.detail.map(err => err.msg).join(", ");
+                } else {
+                    message.innerText = data.detail || "Submission failed";
+                }
+                console.error("Signup failed details:", data);
             }
 
         } catch (error) {
@@ -66,4 +94,4 @@ document.getElementById("adminForm").addEventListener("submit", async function(e
         message.style.color = "red";
         message.innerText = !avatarFile ? "Please upload a photo!" : "Please fill all fields!";
     }
-});
+});
