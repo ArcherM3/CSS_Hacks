@@ -11,12 +11,12 @@
 
      <!-- Navbar -->
   <header class="navbar solid">
-    <a href="home_page.html" class="logo">
-      ☰ <span>CampusResolve</span>
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="CampusResolve" class="logo-img"> <span>CampusResolve</span>
     </a>
 
     <nav class="nav-links">
-      <a href="home_page.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="complaint.html">Raise a complaint</a>
       <a href="dept1.html">Departments</a>
 
@@ -36,16 +36,19 @@
     <h2>Sign up as a student</h2>
 
     <label>Name</label>
-    <input type="text" id="username" required>
+    <input type="text" id="username" pattern="[A-Za-z ]+" title="Username should only contain letters" required>
 
     <label>College email</label>
-    <input type="email" id="college_email" required>
+    <input type="email" id="college_email" pattern=".+@nits\.ac\.in" title="Email must end with @nits.ac.in" required>
 
     <label>Password</label>
     <input type="password" id="password" required>
 
     <label>Scholar ID</label>
     <input type="text" id="sch_id" required>
+
+    <label>Phone Number</label>
+    <input type="text" id="phone" pattern="\d{10}" title="Phone number should be exactly 10 digits" required>
 
     <div class="photo-upload">
         <button class="photo-btn" id="photoBtn">Add your Photo</button>
