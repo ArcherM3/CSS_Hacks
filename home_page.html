@@ -17,8 +17,19 @@
       <div class="logo-mark">CR</div>
       <span>CampusResolve</span>
     </div>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="navbar.css" />
+</head>
+<body>
+
+  <!-- Navbar -->                                                                           
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="CampusResolve" class="logo-img"> <span>CampusResolve</span>
+    </a>
+
     <nav class="nav-links">
-      <a href="#" class="active">Home</a>
+      <a href="index.html">Home</a>
       <a href="complaint.html">Raise a complaint</a>
       <a href="dept.html">Departments</a>
       <span id="auth-section">
@@ -28,6 +39,15 @@
       <span id="profile-section" style="display:none; margin-left: 1rem; align-items: center;">
         <a href="stud-profile.html" id="profile-link">
           <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="nav-profile-icon" class="profile-icon" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--clr-copper);">
+      <a href="dept1.html">Departments</a>
+      <span id="auth-section">
+        <a href="role.html" class="login-btn">Login</a>
+        <a href="signup2.html" class="sign_up-btn">Sign Up</a>
+      </span>
+
+      <span id="profile-section">
+        <a href="stud-profile.html" id="profile-link">
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profile-icon-img" class="profile-icon" alt="Profile">
         </a>
       </span>
     </nav>
@@ -128,6 +148,24 @@
         <p class="feat-desc">Once resolved, share feedback to help your campus improve response times and service quality.</p>
         <span class="feat-tag tc-pink">Feedback loop</span>
       </div>
+      <h1>
+        Campus issues,
+        <span>resolved fast.</span>
+      </h1>
+      <p>
+        Submit complaints from hostels, mess, classrooms or campus infra.
+        Get automatic routing and real-time resolution tracking.
+      </p>
+    </div>
+  </section>
+
+  <!-- Dashboard Section -->
+  <div class="dashboard">
+    <!-- Total Complaints -->
+    <div class="card">
+      <p id="total">0</p><br>
+      <h3>Total Complaints</h3>
+    </div>
 
     </div>
   </section>
@@ -206,6 +244,57 @@
         <div class="footer-info-block">
           <img src="NITS.svg" class="footer-nits-logo" alt="NIT Silchar">
           <div class="footer-address">
+    <!-- Resolved Complaints -->
+    <div class="card">
+      <p id="resolved">0</p><br>
+      <h3>Resolved Complaints</h3>
+    </div>
+  </div>
+
+  <!-- How it works Section -->
+  <div class="container">
+      <h1>How it works</h1>
+
+      <div class="step-container first-row">
+          <div class="step">
+              <div class="step-box">Step 1</div>
+              <div class="card1"><div class="icon-box"><img src="user.png" alt="User"></div><p>Sign up</p></div>
+          </div>
+          
+          <div class="step">
+              <div class="step-box">Step 2</div>
+              <div class="card1"><div class="icon-box"><img src="forward.png" alt="Forward"></div><p>Raise a complaint</p></div>
+          </div>
+          
+          <div class="step">
+              <div class="step-box">Step 3</div>
+              <div class="card1"><div class="icon-box"><img src="location.png" alt="Location"></div><p>Check Live Status</p></div>
+          </div>
+      </div>
+
+      <div class="step-container second-row">
+          <div class="step">
+              <div class="step-box">Step 4</div>
+               <div class="card1"><div class="icon-box"><img src="solutions.png" alt="Solutions"></div><p>Get it Resolved</p></div>
+          </div>
+          
+          <div class="step">
+              <div class="step-box">Step 5</div>
+               <div class="card1"><div class="icon-box"><img src="feedback.png" alt="Feedback"></div><p>Feedback</p></div>
+          </div>
+      </div>
+  </div>
+  <br><br>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <!-- Left Section -->
+      <div class="footer-left">
+        <h2>CampusResolve</h2>
+        <div class="footer-info">
+          <img src="NITS.svg" class="footer-logo" alt="logo">
+          <div class="footer-text">
             <p>National Institute of Technology Silchar,</p>
             <p>Cachar, Assam, India</p>
             <p>Tel : +91 3842-224-797</p>
@@ -268,5 +357,81 @@
     obs.observe(document.getElementById("cta-resolved"), cfg);
   </script>
 
+          <div class="footer-right">
+            <h3>For queries, contact</h3>
+            <p>+91 7896637401</p>
+            <p>+91 7099683180</p>
+            <p>+91 7010976847</p>
+            <p>+91 9004230955</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="line"></div>
+    <div class="footer-bottom">
+      <p>© 2026 CampusResolve</p>
+      <p>All rights reserved | Designed & Developed by WebWizards</p>
+    </div>
+    <div class="spacing"></div>
+  </footer>
+
+  <script src="navbar.js"></script>
+  <script>
+  async function updateStats() {
+    try {
+      const token = localStorage.getItem('token');
+      const role = localStorage.getItem('role');
+      if (!token) {
+          updateEfficiency();
+          return;
+      }
+
+      const endpoint = role === 'admin' 
+        ? 'https://web-wizards-backend.onrender.com/complaints/complaint/admin/stats'
+        : 'https://web-wizards-backend.onrender.com/complaints/complaint/student/stats';
+
+      const response = await fetch(endpoint, {
+          headers: { 'Authorization': `Bearer ${token}` }
+      });
+      
+      if (response.ok) {
+          const stats = await response.json();
+          // Backend keys might vary: total_complaints, resolved, etc.
+          const total = stats.total_complaints || stats.total || 0;
+          const resolved = stats.resolved || 0;
+          
+          document.getElementById("total").textContent = total;
+          document.getElementById("resolved").textContent = resolved;
+          
+          updateEfficiency();
+      }
+    } catch (e) {
+      console.error("Stats fetch error:", e);
+      updateEfficiency();
+    }
+  }
+
+  function updateEfficiency() {
+    const total = Number(document.getElementById("total").textContent.trim());
+    const resolved = Number(document.getElementById("resolved").textContent.trim());
+
+    if (!isNaN(total) && total > 0) {
+      let efficiency = (resolved / total) * 100;
+      efficiency = efficiency.toFixed(1);
+
+      document.getElementById("efficiencyText").textContent = efficiency + "%";
+      document.getElementById("circleProgress")
+        .setAttribute("stroke-dasharray", efficiency + ", 100");
+    } else {
+        document.getElementById("efficiencyText").textContent = "0%";
+        document.getElementById("circleProgress")
+        .setAttribute("stroke-dasharray", "0, 100");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", updateStats);
+  </script>
 </body>
 </html>

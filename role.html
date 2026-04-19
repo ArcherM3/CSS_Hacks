@@ -9,12 +9,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="role.css">
+  <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
 
+   <!-- Navbar -->
+  <header class="navbar solid">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="CampusResolve" class="logo-img"> <span>CampusResolve</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="complaint.html">Raise a complaint</a>
+      <a href="dept1.html">Departments</a>
+
+      <span id="auth-section">
+        <a href="role.html" class="login-btn">Login</a>
+        <a href="signup2.html" class="sign_up-btn">Sign Up</a>
+      </span>
+
+      <span id="profile-section">
+        <a href="stud-profile.html" id="profile-link">
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profile-icon-img" class="profile-icon" alt="Profile">
+        </a>
+      </span>
+    </nav>
+  </header>
 <div class="container">
   <div class="card">
-    <h1 class="title">CampusFix 🔧</h1>
+    <h1 class="title">Campus Resolve</h1>
     <p class="subtitle">Who are you?</p>
 
     <div class="buttons">
@@ -23,11 +47,17 @@
       </a>
 
       <a href="index.html?role=admin">
+      <a href="login.html">
+        <button class="student"> Student</button>
+      </a>
+
+      <a href="login.html">
         <button class="admin"> Admin</button>
       </a>
     </div>
   </div>
 </div>
 
+  <script src="navbar.js"></script>
 </body>
 </html>

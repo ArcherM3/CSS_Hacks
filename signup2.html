@@ -9,7 +9,7 @@
 
 <body>
 
-     <!-- Navbar -->
+   <!-- Navbar -->
   <header class="navbar solid">
     <a href="index.html" class="logo">
       <img src="logo.png" alt="CampusResolve" class="logo-img"> <span>CampusResolve</span>
@@ -32,43 +32,33 @@
       </span>
     </nav>
   </header>
+
 <div class="container">
     <h2>Sign up as a student</h2>
-
+    <form id="signupForm">
     <label>Name</label>
-    <input type="text" id="username">
+    <input type="text" name="username" pattern="[A-Za-z ]+" title="Name should only contain letters" required>
 
     <label>College email</label>
-    <input type="email" id="college_email">
+    <input type="email" name="college_email" pattern=".+@nits\.ac\.in" title="Email must end with @nits.ac.in" required>
 
     <label>Password</label>
-    <input type="password" id="password">
+    <input type="password" name="password" required>
 
     <label>Scholar ID</label>
-    <input type="text" id="sch_id">
-    <input type="text" id="username" pattern="[A-Za-z ]+" title="Username should only contain letters" required>
-
-    <label>College email</label>
-    <input type="email" id="college_email" pattern=".+@nits\.ac\.in" title="Email must end with @nits.ac.in" required>
-
-    <label>Password</label>
-    <input type="password" id="password" required>
-
-    <label>Scholar ID</label>
-    <input type="text" id="sch_id" required>
+    <input type="text" name="sch_id" required>
 
     <label>Phone Number</label>
-    <input type="text" id="phone" pattern="\d{10}" title="Phone number should be exactly 10 digits" required>
+    <input type="text" name="phone" pattern="\d{10}" title="Phone number should be exactly 10 digits" required>
 
     <div class="photo-upload">
-        <button class="photo-btn" id="photoBtn">Add your Photo</button>
-        <button class="plus-btn" id="plusBtn">+</button>
+        <button class="photo-btn" type="button">Add Your Photo</button>
+        <button class="plus-btn" type="button">+</button>
     </div>
-    <button class="signup-btn" id="signupBtn">Sign Up</button>
-    <p id="message"></p>
-    <p class="admin-link" id="adminLink">Sign up as an Admin</p>
+<button class="signup-btn" type="submit">Sign Up</button>
+    <a href="admin-signup.html" class="admin-link">Sign up as an Admin</a>
 </div>
 <script src="navbar.js"></script>
-<script src="signup.js"></script>
+<script src="signup2.js"></script>
 </body>
 </html>

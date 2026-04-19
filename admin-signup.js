@@ -1,46 +1,43 @@
+// Photo upload logic
+const avatarInput = document.getElementById("avatarInput");
+const photoBtn = document.getElementById("photoBtn");
+const plusBtn = document.getElementById("plusBtn");
+
+photoBtn.addEventListener("click", () => avatarInput.click());
+plusBtn.addEventListener("click", () => avatarInput.click());
+
+avatarInput.addEventListener("change", () => {
+    if (avatarInput.files.length > 0) {
+        photoBtn.textContent = avatarInput.files[0].name;
+    }
+});
+
 document.getElementById("adminForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    let name = document.getElementById("name").value;
+    let username = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
+    let admin_id = document.getElementById("admin_id").value;
+    let phone = document.getElementById("phone").value;
     let department = document.getElementById("department").value;
-    let idVal = document.getElementById("id").value;
-    let avatar = document.getElementById("avatar").files[0];
+    let avatarFile = avatarInput.files[0];
 
     let message = document.getElementById("message");
 
-    if (name && email && password && department && idVal && avatar) {
-        const fd = new FormData();
-        fd.append("username", name);
-        fd.append("email", email);
-        fd.append("password", password);
-        fd.append("department", department);
-        fd.append("id", idVal);
-        fd.append("avatar", avatar);
+    // Constraints
+    const nameRegex = /^[A-Za-z ]+$/;
+    const phoneRegex = /^\d{10}$/;
 
-        try {
-            const res = await fetch("https://web-wizards-backend.onrender.com/auth/signup/admin", {
-                method: "POST",
-                body: fd
-            });
-            if(res.ok) {
-                message.style.color = "green";
-                message.innerText = "Admin registered successfully!";
-                setTimeout(() => {
-                    window.location.href = "index.html?role=admin";
-                }, 1000);
-            } else {
-                const data = await res.json();
-                message.style.color = "red";
-                message.innerText = data.detail || "Signup failed";
-            }
-        } catch (err) {
-            message.style.color = "red";
-            message.innerText = "Server error";
-        }
-    } else {
+    if (!username || !email || !password || !admin_id || !phone || !department) {
         message.style.color = "red";
         message.innerText = "Please fill all fields!";
+        return;
+    }
+
+    if (!nameRegex.test(username)) {
+        message.style.color = "red";
+        message.innerText = "Name should only contain letters!";
+        return;
     }
 });
