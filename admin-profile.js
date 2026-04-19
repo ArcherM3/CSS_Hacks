@@ -50,23 +50,21 @@ async function loadDepartmentStats(department) {
     const token = localStorage.getItem("token");
     const res  = await fetch(
       `https://web-wizards-backend.onrender.com/complaints/complaint/admin/stats?department=${encodeURIComponent(department)}`, {
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
+        headers: { "Authorization": `Bearer ${token}` }
       }
     );
     const data = await res.json();
 
     // Update the three metric cards with live numbers
-    document.getElementById('totalCount').textContent   = data.total_complaints ?? data.total ?? '—';
-    document.getElementById('resolvedCount').textContent = data.resolved ?? '—';
-    document.getElementById('pendingCount').textContent  = data.pending  ?? '—';
+    document.getElementById('totalCount').textContent   = data.total_complaints ?? data.total ?? '0';
+    document.getElementById('resolvedCount').textContent = data.resolved ?? '0';
+    document.getElementById('pendingCount').textContent  = data.pending  ?? '0';
 
   } catch (err) {
     console.error('Failed to load department stats:', err);
-    // Leave the '—' placeholders visible so the UI doesn't show stale numbers
   }
 }
+
 
 // ─── Load pending complaints table ───────────────────────────────────────────
 /**
