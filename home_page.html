@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device_width, initial-scale=1.0"/>
   <title>CampusResolve</title>
-  <link rel="stylesheet" href="home_page.css" />
+  <link rel="stylesheet" href="index.css" />
   <link rel="stylesheet" href="navbar.css" />
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- Navbar -->                                                                           
   <header class="navbar">
-    <a href="home_page.html" class="logo">
-      ☰ <span>CampusResolve</span>
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="CampusResolve" class="logo-img"> <span>CampusResolve</span>
     </a>
 
     <nav class="nav-links">
-      <a href="home_page.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="complaint.html">Raise a complaint</a>
       <a href="dept1.html">Departments</a>
       <span id="auth-section">
@@ -51,7 +51,7 @@
   <div class="dashboard">
     <!-- Total Complaints -->
     <div class="card">
-      <p id="total">120</p><br>
+      <p id="total">0</p><br>
       <h3>Total Complaints</h3>
     </div>
 
@@ -79,7 +79,7 @@
 
     <!-- Resolved Complaints -->
     <div class="card">
-      <p id="resolved">110</p><br>
+      <p id="resolved">0</p><br>
       <h3>Resolved Complaints</h3>
     </div>
   </div>
@@ -157,21 +157,25 @@
   <script>
   async function updateStats() {
     try {
-      // We'll try to fetch stats even if not logged in to show dummy/real data
-      // But the endpoint requires a token. If no token, we show default values.
       const token = localStorage.getItem('token');
+      const role = localStorage.getItem('role');
       if (!token) {
           updateEfficiency();
           return;
       }
 
-      const response = await fetch('https://web-wizards-backend.onrender.com/complaints/complaint/student/stats', {
+      const endpoint = role === 'admin' 
+        ? 'https://web-wizards-backend.onrender.com/complaints/complaint/admin/stats'
+        : 'https://web-wizards-backend.onrender.com/complaints/complaint/student/stats';
+
+      const response = await fetch(endpoint, {
           headers: { 'Authorization': `Bearer ${token}` }
       });
       
       if (response.ok) {
           const stats = await response.json();
-          const total = stats.total_complaints || 0;
+          // Backend keys might vary: total_complaints, resolved, etc.
+          const total = stats.total_complaints || stats.total || 0;
           const resolved = stats.resolved || 0;
           
           document.getElementById("total").textContent = total;
