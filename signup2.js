@@ -37,11 +37,31 @@ signUpBtn.addEventListener("click", (e) => {
     const emailValue = document.querySelector('input[name="college_email"]').value;
     const passValue = document.querySelector('input[name="password"]').value;
     const scholarValue = document.querySelector('input[name="sch_id"]').value;
+    const phoneValue = document.querySelector('input[name="phone"]').value;
     const file = fileInput.files[0];
 
-    // 2. Validation: Backend REQUIRES an avatar
-    if (!nameValue || !emailValue || !passValue || !scholarValue) {
-        alert("Please fill in all text fields.");
+    // Constraints
+    const nameRegex = /^[A-Za-z ]+$/;
+    const emailRegex = /.+@nits\.ac\.in$/;
+    const phoneRegex = /^\d{10}$/;
+
+    if (!nameValue || !emailValue || !passValue || !scholarValue || !phoneValue) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    if (!nameRegex.test(nameValue)) {
+        alert("Name should only contain letters.");
+        return;
+    }
+
+    if (!emailRegex.test(emailValue)) {
+        alert("Email must end with @nits.ac.in");
+        return;
+    }
+
+    if (!phoneRegex.test(phoneValue)) {
+        alert("Phone number should be exactly 10 digits.");
         return;
     }
 
@@ -56,6 +76,7 @@ signUpBtn.addEventListener("click", (e) => {
     formData.append("college_email", emailValue);
     formData.append("password", passValue);
     formData.append("sch_id", scholarValue);
+    formData.append("phone_number", phoneValue);
     formData.append("avatar", file); // Must be 'avatar' to match Python
 
     // 4. Send to Server
