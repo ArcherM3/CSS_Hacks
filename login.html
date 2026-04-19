@@ -15,12 +15,12 @@
 
    <!-- Navbar -->
   <header class="navbar solid">
-    <a href="home_page.html" class="logo">
-      ☰ <span>CampusResolve</span>
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="CampusResolve" class="logo-img"> <span>CampusResolve</span>
     </a>
 
     <nav class="nav-links">
-      <a href="home_page.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="complaint.html">Raise a complaint</a>
       <a href="dept1.html">Departments</a>
 
@@ -43,10 +43,6 @@
     <p class="tagline">Report. Track. Resolve.</p>
 
     <form id="loginForm" onsubmit="handleLogin(event)">
-      <select id="role" required>
-        <option value="student">Student</option>
-        <option value="admin">Admin</option>
-      </select>
       <input type="text" id="username" placeholder="Username" required>
       <input type="email" id="email" placeholder="College Email" required>
       <input type="password" id="password" placeholder="Password" required>
@@ -65,11 +61,13 @@
   async function handleLogin(event) {
     event.preventDefault();
 
-    const role = document.getElementById("role").value;
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const message = document.getElementById("message");
+
+    // Determine role based on email domain
+    const role = email.endsWith("@nits.ac.in") ? "student" : "admin";
 
     const endpoint = role === "student" 
       ? "https://web-wizards-backend.onrender.com/auth/login/student" 
@@ -102,7 +100,7 @@
         await fetchProfile(data.token, data.role || role);
 
         setTimeout(() => {
-            window.location.href = (data.role || role) === "admin" ? "admin-profile.html" : "home_page.html";
+            window.location.href = (data.role || role) === "admin" ? "admin-profile.html" : "index.html";
         }, 1000);
       } else {
         message.style.color = "red";
