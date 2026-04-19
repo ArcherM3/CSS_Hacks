@@ -20,7 +20,7 @@ function initNavbar() {
     // Check if we are on the home page to set transparency
     const navbar = document.querySelector(".navbar");
     if (navbar) {
-        if (window.location.pathname.includes("home_page.html") || window.location.pathname === "/" || window.location.pathname.endsWith("CampusResolve/")) {
+        if (window.location.pathname.includes("index.html") || window.location.pathname === "/" || window.location.pathname.endsWith("CampusResolve/")) {
             navbar.classList.add("transparent");
         } else {
             navbar.classList.add("solid");
@@ -59,5 +59,5 @@ function initNavbar() {
 // Global logout function
 window.logout = function() {
     localStorage.clear();
-    window.location.href = "home_page.html";
+    window.location.href = "index.html";
 };
