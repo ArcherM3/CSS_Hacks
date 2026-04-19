@@ -4,31 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CampusResolve - Departments</title>
-    <link rel="stylesheet" href="dept.css">
+    <link rel="stylesheet" href="dept1.css">
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
 
-    <nav class="navbar">
-          <div class="navbar">
-    <div class="nav-left">
-        <span class="menu-icon">☰</span>
-        <span class="logo">CampusResolve</span>
-    </div>
+    <!-- Navbar -->
+  <header class="navbar solid">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="CampusResolve" class="logo-img"> <span>CampusResolve</span>
+    </a>
 
-    <div class="nav-right">
-        <a href="home_page.html">Home</a>
-        <a href="complaint.html" >Raise a Complaint</a>
-        <a href="dept.html" class="active">Departments</a>
-        <span class="dots">•••</span>
-    </div>
-      </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="complaint.html">Raise a complaint</a>
+      <a href="dept1.html">Departments</a>
+
+      <span id="auth-section">
+        <a href="role.html" class="login-btn">Login</a>
+        <a href="signup2.html" class="sign_up-btn">Sign Up</a>
+      </span>
+
+      <span id="profile-section">
+        <a href="stud-profile.html" id="profile-link">
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profile-icon-img" class="profile-icon" alt="Profile">
+        </a>
+      </span>
     </nav>
+  </header>
 
     <main class="grid-container">
         <div class="card">
             <div class="card-header">Academics</div>
             <div class="card-body">
-                <div class="card-image"><img src="academics1.jpg" alt="Academics"></div>
+                <div class="card-image"><img src="academics1.jpeg" alt="Academics"></div>
                 <ul>
                     <li>Study-related issues</li>
                     <li>Books & syllabus</li>
@@ -39,7 +48,7 @@
         <div class="card">
             <div class="card-header">Infrastructure</div>
             <div class="card-body">
-                <div class="card-image"><img src="infrastructure1.jpg" alt="Infrastructure"></div>
+                <div class="card-image"><img src="infrastructure1.jpeg" alt="Infrastructure"></div>
                 <ul>
                     <li>Broken desks</li>
                     <li>Classroom facilities</li>
@@ -50,7 +59,7 @@
         <div class="card">
             <div class="card-header">IT</div>
             <div class="card-body">
-                <div class="card-image"><img src="IT1.jpg" alt="IT"></div>
+                <div class="card-image"><img src="IT1.jpeg" alt="IT"></div>
                 <ul>
                     <li>WiFi issues</li>
                     <li>Portal/login errors</li>
@@ -61,7 +70,7 @@
         <div class="card">
             <div class="card-header">Hostel</div>
             <div class="card-body">
-                <div class="card-image"><img src="hostel1.jpg" alt="Hostel"></div>
+                <div class="card-image"><img src="hostel1.jpeg" alt="Hostel"></div>
                 <ul>
                     <li>Room maintenance</li>
                     <li>Water/electricity</li>
@@ -72,7 +81,7 @@
         <div class="card">
             <div class="card-header">Mess</div>
             <div class="card-body">
-                <div class="card-image"><img src="messfood1.jpg" alt="Mess"></div>
+                <div class="card-image"><img src="messfood1.jpeg" alt="Mess"></div>
                 <ul>
                     <li>Food quality</li>
                     <li>Hygiene issues</li>
@@ -83,7 +92,7 @@
         <div class="card">
             <div class="card-header">Security</div>
             <div class="card-body">
-                <div class="card-image"><img src="security2.jpg" alt="Security"></div>
+                <div class="card-image"><img src="security2.jpeg" alt="Security"></div>
                 <ul>
                     <li>Safety concerns</li>
                     <li>Unauthorized entry</li>
@@ -93,7 +102,7 @@
         <div class="card">
             <div class="card-header">Library</div>
             <div class="card-body">
-                <div class="card-image"><img src="library.jpg" alt="library"></div>
+                <div class="card-image"><img src="library.jpeg" alt="library"></div>
                 <ul>
                     <li>Book availability</li>
                     <li>Reading space</li>
@@ -103,7 +112,7 @@
         <div class="card">
             <div class="card-header">Transport</div>
             <div class="card-body">
-                <div class="card-image"><img src="transport2.jpg" alt="Transport"></div>
+                <div class="card-image"><img src="transport2.jpeg" alt="Transport"></div>
                 <ul>
                     <li>Bus delays</li>
                     <li>Route issues</li>
@@ -113,7 +122,7 @@
         <div class="card">
             <div class="card-header">Medical</div>
             <div class="card-body">
-                <div class="card-image"><img src="medical1.jpg" alt="Medical"></div>
+                <div class="card-image"><img src="medical1.jpeg" alt="Medical"></div>
                 <ul>
                     <li>Health services</li>
                     <li>Emergency support</li>
@@ -123,7 +132,7 @@
         <div class="card">
             <div class="card-header">Administration</div>
             <div class="card-body">
-                <div class="card-image"><img src="administration1.jpg" alt="Administration"></div>
+                <div class="card-image"><img src="administration1.jpeg" alt="Administration"></div>
                 <ul>
                     <li>Document issues</li>
                      <li>General complaints</li>
@@ -131,6 +140,48 @@
             </div>
         </div>
     </main>
+    <!-- Footer -->
+ <footer class="footer">
+  <div class="footer-top">
 
+    <!-- Left Section -->
+    <div class="footer-left">
+      <h2>CampusResolve</h2>
+      <div class="footer-info">
+  <img src="NITS.svg" class="footer-logo" alt="logo">
+
+  <div class="footer-text">
+    <p>National Institute of Technology Silchar,</p>
+    <p>Cachar, Assam, India</p>
+    <p>Tel : +91 3842-224-797</p>
+    <p>Email: director@nits.ac.in</p>
+  </div>
+  <div class="footer-right">
+    <h3>For queries, contact</h3>
+    <p>+91 7896637401</p>
+    <p>+91 7099683180</p>
+    <p>+91 7010976847</p>
+    <p>+91 9004230955</p>
+  </div>
+</div>
+      
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+   <div class="line">
+
+   </div>
+  <div class="footer-bottom">
+    <p>© 2026 CampusResolve</p>
+    <p>All rights reserved | Designed & Developed by WebWizards</p>
+  </div>
+  <div class="spacing">
+    
+  </div>
+</footer>
+    <script src="navbar.js"></script>
+    <script src="home_page.js"></script>
 </body>
 </html>
