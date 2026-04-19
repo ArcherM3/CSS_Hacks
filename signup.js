@@ -46,7 +46,39 @@ adminLink.addEventListener("click", () => {
 });
 const signupBtn = document.querySelector(".signup-btn");
 
-signupBtn.addEventListener("click", function() {
-    localStorage.setItem("loggedIn", "true");
-    window.location.href = "home_page.html";
+signupBtn.addEventListener("click", async function() {
+    const username = document.getElementById("username").value;
+    const college_email = document.getElementById("college_email").value;
+    const password = document.getElementById("password").value;
+    const sch_id = document.getElementById("sch_id").value;
+    const file = fileInput.files[0];
+
+    if (!username || !college_email || !password || !sch_id || !file) {
+        alert("Please fill all fields and attach an avatar");
+        return;
+    }
+
+    const fd = new FormData();
+    fd.append("username", username);
+    fd.append("college_email", college_email);
+    fd.append("password", password);
+    fd.append("sch_id", sch_id);
+    fd.append("avatar", file);
+
+    try {
+        const res = await fetch("https://web-wizards-backend.onrender.com/auth/signup/student", {
+            method: "POST",
+            body: fd
+        });
+        if (res.ok) {
+            alert("Signup successful! Please login.");
+            window.location.href = "index.html?role=student";
+        } else {
+            const data = await res.json();
+            alert(data.detail || "Signup failed");
+        }
+    } catch(e) {
+        alert("Error connecting to server");
+        console.error(e);
+    }
 });
